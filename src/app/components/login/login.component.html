@@ -1,0 +1,25 @@
+<form fxLayout="column" [formGroup]="group">
+    <h2>Inicio de Sesión</h2>
+    <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input type="text"
+            matInput
+            required
+            placeholder="Ingrese su usuario"
+            formControlName="id_usuario">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Constraseña</mat-label>
+        <input type="password"
+            matInput
+            required
+            placeholder="Ingrese su contraseña"
+            formControlName="clave">
+      </mat-form-field>
+    <button 
+        mat-raised-button
+        color="primary"
+        [disabled]="group.invalid"
+        (click) = "loginUsuario()"
+        >Ingresar</button>
+  </form>

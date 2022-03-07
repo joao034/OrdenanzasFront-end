@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-header">
+        Agregar usuario
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formUsuario" (ngSubmit) = "agregarUsuario()" >
+            <!--ID Usuario-->
+            <div class="mb-3">
+              <label for="" class="form-label"></label>
+              <input type="text"
+                class="form-control" name="" id="" formControlName="id_usuario" aria-describedby="helpId" placeholder="Id Usuario">
+            </div>
+
+            <!--Contraseña-->
+            <div class="mb-3">
+                <label for="" class="form-label"></label>
+                <input type="password"
+                  class="form-control" name="" id="" formControlName="clave" aria-describedby="helpId" placeholder="Contraseña">
+            </div>
+
+              <!--Nombre-->
+              <div class="mb-3">
+                <label for="" class="form-label"></label>
+                <input type="text"
+                  class="form-control" name="" id="" formControlName="nombre" aria-describedby="helpId" placeholder="Nombre">
+            </div>
+
+              <!--Correo-->
+              <div class="mb-3">
+                <label for="" class="form-label"></label>
+                <input type="email"
+                  class="form-control" name="" id="" formControlName="correo" aria-describedby="helpId" placeholder="Correo Electrónico">
+            </div>
+
+            <!--Permiso (Admin o Editor)-->
+            <select formControlName="id_permiso" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+                <option selected>Permiso del usuario</option>
+                <option value="1">Administrador</option>
+                <option value="2">Editor</option>
+            </select>
+
+              <!--Departamento (Admin o Editor)-->
+            <select formControlName="id_departamento" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Departamento al que pertenece el usuario</option>
+                <option value="1">Desarrollo Socio Economico</option>
+                <option value="2">Obras Publicas</option>
+                <option value="3">Division</option>
+                <option value="4">Desarrollo Institucional</option>
+                <option value="5">Impuestos, Tasas y Contribuciones</option>
+                <option value="6">Medio Ambiente</option>
+                <option value="7">Planificacion</option>
+                <option value="8">Servicios Municipales</option>
+            </select>
+
+            <div class="btn-group" role="group" aria-label="">
+                <button type="submit" class="btn btn-success">Agregar</button>
+                <button type="button" class="btn btn-primary">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+</div>

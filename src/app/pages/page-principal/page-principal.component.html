@@ -1,0 +1,15 @@
+<mat-sidenav-container autosize="true">
+    <mat-sidenav opened="true" mode="side">
+        <div class="logo" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px">
+            <img class="logo-gad" src="/assets/img/gad-logo.png" alt="Logo GAD Municipal de Pelileo">
+            <h3 *ngIf="expanded">GAD de Pelileo</h3>
+        </div>
+        <app-menu (onToggleExpanded) = "toggleExpanded($event)"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header></app-header>
+        <!--Una vez definidas las rutas-->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

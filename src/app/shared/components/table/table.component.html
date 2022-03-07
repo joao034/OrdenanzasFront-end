@@ -1,0 +1,11 @@
+<div fxLayout="column">
+    <ng-content></ng-content>
+    <table mat-table [dataSource]="data">
+        <ng-container [matColumnDef]="metadata.campo" *ngFor="let metadata of metaDataColumns">
+            <th mat-header-cell *matHeaderCellDef>{{ metadata.titulo }}</th>
+            <td mat-cell *matCellDef="let row">{{ row[metadata.campo] }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="listFields; sticky:true" ></tr>
+        <tr mat-row *matRowDef="let row; columns:listFields" class="highline"></tr>
+    </table>
+</div>
