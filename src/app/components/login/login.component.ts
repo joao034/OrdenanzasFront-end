@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   public static usuario : Usuario 
 
   constructor(private loginService : LoginService, private router : Router) { 
-    //Seteando los valores que el usuario digite
+    //Asignando los valores que el usuario digite en los inputs
     this.group = new FormGroup({
       id_usuario: new FormControl(null, [Validators.required, Validators.required]),
       clave: new FormControl(null, Validators.required),
@@ -37,11 +37,10 @@ export class LoginComponent implements OnInit {
           //instancio mi objeto usuario pasando los datos que devuelve el servidor
           LoginComponent.usuario = datos;
           console.log(LoginComponent.usuario)
-          alert('Login Exitoso')
           this.redireccion()
         }else{
           console.log(LoginComponent.usuario)
-          alert('Login Fallido')
+          alert('Usuario o Contraseña Incorrecta!')
         }
       });
     }

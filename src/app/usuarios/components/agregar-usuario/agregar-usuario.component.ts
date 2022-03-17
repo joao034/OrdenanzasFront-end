@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CrudDepartamentosService } from 'src/app/services/crud-departamentos.service';
+import { CrudUsuarioService } from 'src/app/services/crud-usuario.service';
 
 @Component({
   selector: 'app-agregar-usuario',
@@ -9,24 +12,50 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AgregarUsuarioComponent implements OnInit {
 
   formUsuario : FormGroup
+  listaDepartamentos : any
+  listaPerfilesUsuario : any
 
-  constructor(public formulario : FormBuilder) { 
-    this.formUsuario = formulario.group({
-      id_usuario : [''],
-      clave : [''],
-      nombre : [''],
-      correo: [''],
-      id_permiso : [''],
-      id_departamento:['']
+
+  constructor(private crudUsuario: CrudUsuarioService,
+              private crudDepartamento : CrudDepartamentosService, 
+              private router : Router) 
+  { 
+    this.formUsuario = new FormGroup({
+      id_usuario : new FormControl(null, Validators.required),
+      clave : new FormControl(null, Validators.required),
+      nombre : new FormControl(null, Validators.required),
+      correo: new FormControl(null, [Validators.required, Validators.email]),
+      id_permiso_per : new FormControl(null, Validators.required),
+      id_departamento_per : new FormControl(null, Validators.required)
     })
   }
 
   ngOnInit(): void {
+    this.cargarComboDepartamentos()
   }
 
   agregarUsuario():any{
-    console.log('Me presionaste')
-    console.log(this.formUsuario.value)
+    this.crudUsuario.agregarUsuario(this.formUsuario.value).subscribe(
+      (datos) => {
+        alert('Usuario insertado correctamente')
+        //Redirecciona a la lista de usuario una vez insertado el nuevo registro
+        this.cancelar()
+      }
+    )
   }
+
+  cancelar(){
+    this.router.navigate(['/usuarios'])
+  }
+
+  cargarComboDepartamentos(){
+    this.crudDepartamento.obtenerDepartamentos().subscribe(
+      respuesta => {
+        //console.log(respuesta)
+        this.listaDepartamentos = respuesta
+      }
+    )
+  }
+
 
 }

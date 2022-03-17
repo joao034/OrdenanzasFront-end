@@ -6,8 +6,7 @@ import { ListaUsuariosComponent } from "./components/lista-usuarios/lista-usuari
 import { PageUsuariosComponent } from "./page-usuarios/page-usuarios.component";
 
 const routes: Routes = [
-    {path: '', pathMatch:'full', component: PageUsuariosComponent},
-    {path: 'listar-usuario', component: ListaUsuariosComponent},
+    {path: '', component: PageUsuariosComponent},
     {path: 'agregar-usuario', component: AgregarUsuarioComponent},
     {path: 'editar-usuario/:id', component: EditarUsuarioComponent},
 ]

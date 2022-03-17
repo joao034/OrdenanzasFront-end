@@ -11,9 +11,4 @@ export class PageUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  dataUsers = []
-  metaDataColumns = []
-
-
 }

@@ -1,0 +1,27 @@
+
+<div class="card">
+    <div class="card-header">
+        Lista de Ejes
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id Eje</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eje of listaEjes; let iControl = index">
+                    <td>{{eje.id_eje}}</td>
+                    <td>{{eje.nombre}}</td>
+                    <td>
+                        <a class="btn btn-info" role="button" routerLink="/ejes/editar-eje/{{eje.id_eje}}">Editar</a> | 
+                        <a class="btn btn-danger" role="button" (click)="borrar(eje.id_eje, iControl)">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</div>

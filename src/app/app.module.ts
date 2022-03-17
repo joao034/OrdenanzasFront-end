@@ -30,6 +30,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { IconosService } from './services/iconos.service';
 
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -46,10 +47,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    FormsModule, 
     BrowserAnimationsModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
     FlexLayoutModule,
     MatInputModule,
     MatIconModule,
@@ -58,7 +57,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatListModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
+    SharedModule
   ],
   providers: [
     LoginService

@@ -22,6 +22,7 @@ export class MenuService {
   private menuEditor : IMenu [] = [
     {titulo: 'Ordenanzas', url: '/ordenanzas', icono: 'ordenanza'},
     {titulo: 'Años', url: '/años', icono: 'años'},
+    {titulo: 'Usuarios', url: '/usuarios', icono: 'usuario'},
   ]
 
   constructor() { }

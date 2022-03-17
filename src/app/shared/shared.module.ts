@@ -4,8 +4,8 @@ import { TableComponent } from './components/table/table.component';
 import { ContainerComponent } from './components/container/container.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,11 +16,17 @@ import {MatCardModule} from '@angular/material/card';
   imports: [
     CommonModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    RouterModule
   ], 
   exports:[
     TableComponent,
-    ContainerComponent
+    ContainerComponent,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class SharedModule { }

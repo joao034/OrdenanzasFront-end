@@ -1,3 +1,8 @@
+<nav *ngIf="administrador" sticky class="navbar navbar-expand navbar-light bg-light">
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link" routerLink="agregar-usuario">Agregar Usuario</a>
+    </div>
+</nav>
 <div class="card">
     <div class="card-header">
         Usuarios
@@ -8,19 +13,23 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-                    <th>Rol</th>
+                    <th *ngIf="administrador">Rol</th>
+                    <th *ngIf="administrador">Departamento</th>
                     <th>Correo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1851005361</td>
-                    <td>Joao Jacome</td>
-                    <td>Administrador</td>
-                    <td>admin@gmail.com</td>
+                <tr *ngFor="let usuario of listaUsuarios; let iControl = index">
+                    <td>{{usuario.id_usuario}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td *ngIf="administrador">{{usuario.Rol}}</td>
+                    <td *ngIf="administrador">{{usuario.Departamento}}</td>
+                    <td>{{usuario.correo}}</td>
                     <td>
-                       <a routerLink="editar-usuario/1851005361">Editar</a>  | Eliminar</td>
+                       <a class="btn btn-info" routerLink="/usuarios/editar-usuario/{{usuario.id_usuario}}">Editar</a>  | 
+                       <a *ngIf="administrador" class="btn btn-danger" role="button" (click)="borrarUsuario(usuario.id_usuario, iControl)">Eliminar</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

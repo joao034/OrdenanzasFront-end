@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header">Editar Eje</div>
+    <div class="card-body">
+      <form [formGroup]="formEje" (ngSubmit)="editarEje()">
+
+        <!--Id Eje-->  
+        <div class="mb-3">
+          <label for="" class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            readonly
+            formControlName = "id_eje"  
+            aria-describedby="helpId"
+            placeholder="Id del Eje"
+          />
+        </div>
+
+        <!--Nombre-->  
+        <div class="mb-3">
+          <label for="" class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            formControlName = "nombre"  
+            aria-describedby="helpId"
+            placeholder="Nombre del Eje"
+          />
+        </div>
+         <!--Botones-->
+         <div class="btn-group" role="group" aria-label="">
+          <button
+            [disabled]="formEje.invalid"
+            type="submit"
+            class="btn btn-success"
+          >Editar
+          </button>
+          <button type="button" (click)="cancelar()" class="btn btn-primary">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

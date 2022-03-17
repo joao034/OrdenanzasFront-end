@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">Agregar Departamento</div>
+    <div class="card-body">
+      <form [formGroup]="formDepartamento" (ngSubmit)="agregarDepartamento()">
+  
+        <!--Nombre-->
+        <div class="mb-3">
+          <label for="" class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            formControlName="nombre"
+            aria-describedby="helpId"
+            placeholder="Nombre del Departamento"
+          />
+        </div>
+        <div class="btn-group" role="group" aria-label="">
+          <button
+            [disabled]="formDepartamento.invalid"
+            type="submit"
+            class="btn btn-success"
+          >
+            Agregar
+          </button>
+          <button type="button" (click)="cancelar()" class="btn btn-primary">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
