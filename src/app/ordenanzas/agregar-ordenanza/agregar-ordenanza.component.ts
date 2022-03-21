@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Ordenanza } from 'src/app/models/ordenanza';
 import { CrudDepartamentosService } from 'src/app/services/crud-departamentos.service';
 import { CrudEjesService } from 'src/app/services/crud-ejes.service';
@@ -12,6 +13,7 @@ import { VigenciaService } from 'src/app/services/vigencia.service';
   styleUrls: ['./agregar-ordenanza.component.css'],
 })
 export class AgregarOrdenanzaComponent implements OnInit {
+  //atributos
   formOrdenanza: FormGroup;
   listaDepartamentos: any;
   listaVigencia: any;
@@ -23,7 +25,8 @@ export class AgregarOrdenanzaComponent implements OnInit {
     private crudEje: CrudEjesService,
     private crudDepartamentos: CrudDepartamentosService,
     private crudVigencias: VigenciaService,
-    private crudOrdenanzas: CrudOrdenanzaService
+    private crudOrdenanzas: CrudOrdenanzaService,
+    private router : Router
   ) {
     this.formOrdenanza = new FormGroup({
       nombre: new FormControl(null, Validators.required),
@@ -39,8 +42,6 @@ export class AgregarOrdenanzaComponent implements OnInit {
   ngOnInit(): void {
     this.cargarCombos();
   }
-
-  cancelar() {}
 
   //Captura el archivo que se seleccione
   capturarArchivo(event: any): any {
@@ -81,6 +82,8 @@ export class AgregarOrdenanzaComponent implements OnInit {
         .subscribe((respuesta) => {
           console.log(respuesta);
           alert('Ordenanza agregada correctamente!');
+          //this.limpiarCampos()
+          this.redireccion()
         });
     } else {
       alert('Archivo demasiado pesado, tamaño límite 20MB');
@@ -115,5 +118,27 @@ export class AgregarOrdenanzaComponent implements OnInit {
     //maximo 20 MB
     const MAX_SIZE_BYTES = 20000000;
     return tamaño <= MAX_SIZE_BYTES ? true : false;
+  }
+
+  redireccion(){
+    this.router.navigate(['/inicio'])
+  }
+
+  cancelar() {
+    if(window.confirm('¿Desea cancelar la ordenanza?')){
+      this.limpiarCampos()
+    }
+  }
+
+  limpiarCampos(){
+    this.formOrdenanza.setValue({
+      nombre : '',
+      palabras: '',
+      fecha_ordenanza: '',
+      id_eje : '',
+      id_materia : '',
+      id_vigencia : '',
+      archivo : null
+    })
   }
 }

@@ -41,7 +41,7 @@ import { SharedModule } from './shared/shared.module';
     PageLoginComponent,
     HeaderComponent,
     MenuComponent,
-    PagePrincipalComponent
+    PagePrincipalComponent,
   ],
   imports: [
     BrowserModule,

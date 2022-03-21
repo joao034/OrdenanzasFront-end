@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GuardGuard } from './guard.guard';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { PagePrincipalComponent } from './pages/page-principal/page-principal.component';
-import { TableComponent } from './shared/components/table/table.component';
+
 
 const routes: Routes = [
   {
@@ -16,7 +16,13 @@ const routes: Routes = [
     path: 'principal', component: PagePrincipalComponent,
     //Protege la ruta
     canActivate: [GuardGuard]
-  }, 
+  },
+  {
+    path : 'inicio',
+    component: PagePrincipalComponent,
+    loadChildren: () => import('./inicio/inicio.module').then( (m) => m.InicioModule ),
+    canActivate : [GuardGuard]
+  },
   {
     path: 'usuarios',
     component: PagePrincipalComponent,

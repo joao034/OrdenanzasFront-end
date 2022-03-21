@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService : LoginService, private router : Router) { 
     //Asignando los valores que el usuario digite en los inputs
     this.group = new FormGroup({
-      id_usuario: new FormControl(null, [Validators.required, Validators.required]),
+      id_usuario: new FormControl(null, Validators.required),
       clave: new FormControl(null, Validators.required),
     });
   }
@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
         if(datos != null){
           //instancio mi objeto usuario pasando los datos que devuelve el servidor
           LoginComponent.usuario = datos;
-          console.log(LoginComponent.usuario)
-          this.redireccion()
+          this.redireccionInicio()
         }else{
           console.log(LoginComponent.usuario)
           alert('Usuario o Contraseña Incorrecta!')
@@ -45,8 +44,8 @@ export class LoginComponent implements OnInit {
       });
     }
 
-    redireccion(){
-      this.router.navigate([('/ordenanzas')])
+    redireccionInicio(){
+      this.router.navigate([('/inicio')])
     }
   }
 
