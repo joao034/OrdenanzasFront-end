@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL : 'http://localhost/ordenanzas/api/'
+  API_URL : 'https://odenanzas.pelileo.gob.ec/api/'
 };
 
 /*
