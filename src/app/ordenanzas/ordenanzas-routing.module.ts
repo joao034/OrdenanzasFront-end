@@ -1,11 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AgregarOrdenanzaComponent } from "./agregar-ordenanza/agregar-ordenanza.component";
-import { PageOrdenanzasComponent } from "./page-ordenanzas/page-ordenanzas.component";
+import { EditarOrdenanzaComponent } from "./editar-ordenanza/editar-ordenanza.component";
+import { ListaOrdenanzasComponent } from "./lista-ordenanzas/lista-ordenanzas.component";
 
 const routes: Routes = [
-    {path: '', component: PageOrdenanzasComponent},
-    {path: 'agregar-ordenanza', component: AgregarOrdenanzaComponent}
+    {path: '', component: ListaOrdenanzasComponent},
+    {path: 'agregar-ordenanza', component: AgregarOrdenanzaComponent},
+    {path: 'editar-ordenanza/:id', component: EditarOrdenanzaComponent}
 ]
 
 @NgModule({

@@ -1,6 +1,6 @@
 <nav *ngIf="administrador" sticky class="navbar navbar-expand navbar-light bg-light">
     <div class="nav navbar-nav">
-        <u><a class="nav-item nav-link" routerLink="agregar-usuario">Agregar Usuario</a></u>
+        <u><a class="btn btn-info" routerLink="agregar-usuario">Agregar Usuario</a></u>
     </div>
 </nav>
 <div class="card text-center">
@@ -27,7 +27,7 @@
                     <td *ngIf="administrador">{{usuario.Departamento}}</td>
                     <td>{{usuario.correo}}</td>
                     <td>
-                       <a class="btn btn-info" routerLink="/usuarios/editar-usuario/{{usuario.id_usuario}}">Editar</a>  | 
+                       <a class="btn btn-info" routerLink="editar-usuario/{{usuario.id_usuario}}">Editar</a>  | 
                        <a *ngIf="administrador" class="btn btn-danger" role="button" (click)="borrarUsuario(usuario.id_usuario, iControl)">Eliminar</a>
                     </td>
                 </tr>

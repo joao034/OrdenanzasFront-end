@@ -15,4 +15,22 @@ export class CrudOrdenanzaService {
     return this.http.post(`${environment.API_URL}ordenanza.php?insertar=1`, ordenanza, {responseType: 'text'});
   }
 
+  obtenerOrdenanzas(){
+    return this.http.get(`${environment.API_URL}ordenanza.php`)
+  }
+
+  obtenerOrdenanza(id:any){
+    return this.http.get(`${environment.API_URL}ordenanza.php?id=${id}`)
+  }
+
+  deshabilitarOrdenanza(id:any){
+    return this.http.get(`${environment.API_URL}ordenanza.php?deshabilitar=${id}`)
+  }
+
+  editarOrdenanza(){
+
+  }
+
+  buscarOrdenanza(){}
+
 }

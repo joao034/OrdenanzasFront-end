@@ -16,5 +16,4 @@ export class LoginService {
     return this.http.post(`${environment.API_URL}loginUsuario.php`, JSON.stringify(usuario));
   }
 
-
 }
