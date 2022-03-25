@@ -1,65 +1,94 @@
 <div class="card">
-    <div class="card-header text-center"><strong>Editar Ordenanza</strong></div>
-    <div class="card-body">
-  
-      <div class="card text-dark">
-        <div class="card-body">
-          <form (ngSubmit)="editarOrdenanza()" [formGroup]="formOrdenanza">
+  <div class="card-header text-center"><strong>Editar Ordenanza</strong></div>
+  <div class="card-body">
+    <div class="card text-dark">
+      <div class="card-body">
+        <form (ngSubmit)="editarOrdenanza()" [formGroup]="formOrdenanza">
+          <!--Id Ordenanza-->
+          <div class="mb-3">
+            <label for="" class="form-label">Id Ordenanza</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              formControlName="id_ordenanza"
+              placeholder="Nombre de la Ordenanza"
+              readonly
+            />
+          </div>
 
-            <!--Nombre-->
-            <div class="mb-3">
-              <label for="" class="form-label"></label>
-              <input
-                type="text"
-                class="form-control"
-                required
-                formControlName="nombre"
-                placeholder="Nombre de la Ordenanza"
-              />
-            </div>
-      
-            <!--Fecha de la Ordenanza-->
-            <div class="mb-3">
-              <strong><label for="" class="form-label">Fecha de la Ordenanza</label></strong>
-              <input
-                type="date"
-                required
-                class="form-control"
-                formControlName="fecha_ordenanza"
-                aria-describedby="helpId"
-                value="{{formOrdenanza.controls['fecha_ordenanza'].value}}"
-                placeholder="Fecha de la Ordenanza"
-              />
-              <small id="helpId" class="form-text text-muted"
-                >Seleccione la fecha de emisión de la ordenanza</small
+          <!--Nombre-->
+          <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              formControlName="nombre"
+              placeholder="Nombre de la Ordenanza"
+            />
+          </div>
+
+          <!--Fecha de la Ordenanza-->
+          <div class="mb-3">
+            <strong
+              ><label for="" class="form-label"
+                >Fecha de la Ordenanza</label
+              ></strong
+            >
+            <input
+              type="date"
+              required
+              class="form-control"
+              formControlName="fecha_ordenanza"
+              aria-describedby="helpId"
+              value="{{ formOrdenanza.controls['fecha_ordenanza'].value }}"
+              placeholder="Fecha de la Ordenanza"
+            />
+            <small id="helpId" class="form-text text-muted"
+              >Seleccione la fecha de emisión de la ordenanza</small
+            >
+          </div>
+
+          <!--Eje-->
+          <div class="mb-3">
+            <strong><label for="" class="form-label">Eje</label></strong>
+            <select class="form-control" formControlName="id_eje" required>
+              <option *ngFor="let eje of listaEjes" value="{{ eje.id_eje }}">
+                {{ eje.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <!--Departamento-->
+          <div class="mb-3">
+            <strong
+              ><label for="" class="form-label">Departamento</label></strong
+            >
+            <select class="form-control" formControlName="id_materia" required>
+              <option
+                *ngFor="let departamento of listaDepartamentos"
+                value="{{ departamento.id_materia }}"
               >
-            </div>
-      
-            <!--Eje-->
-            <div class="mb-3">
-              <strong><label for="" class="form-label">Eje</label></strong>
-              <select class="form-control" formControlName="id_eje" required>
-                <option *ngFor="let eje of listaEjes" value="{{eje.id_eje}}">{{eje.nombre}}</option>
-              </select>
-            </div>
-      
-            <!--Departamento-->
-            <div class="mb-3">
-              <strong><label for="" class="form-label">Departamento</label></strong>
-              <select class="form-control" formControlName="id_materia" required>
-                <option *ngFor="let departamento of listaDepartamentos" value="{{departamento.id_materia}}">{{departamento.nombre}}</option>
-              </select>
-            </div>
-      
-            <!--Vigencia-->
-            <div class="mb-3">
-              <strong><label for="" class="form-label">Vigencia</label></strong>
-              <select class="form-control" formControlName="id_vigencia" required>
-                <option *ngFor="let vigencia of listaVigencia" value="{{vigencia.id_vigencia}}">{{vigencia.nombre}}</option>
-              </select>
-            </div>
-      
-            <!--Archivo Ordenanza-->
+                {{ departamento.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <!--Vigencia-->
+          <div class="mb-3">
+            <strong><label for="" class="form-label">Vigencia</label></strong>
+            <select class="form-control" formControlName="id_vigencia" required>
+              <option
+                *ngFor="let vigencia of listaVigencia"
+                value="{{ vigencia.id_vigencia }}"
+              >
+                {{ vigencia.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <!--Archivo Ordenanza
             <div class="mb-3">
               <label for="" class="form-label"></label>
               <input
@@ -75,18 +104,17 @@
               <small id="helpId" class="form-text text-muted"
                 >Seleccione el <strong>documento de la Ordenanza</strong> en formato PDF</small
               >
-            </div>
-      
-            <!--Botones-->
-            <div class="btn-group" role="group" aria-label="">
-              <button type="submit" class="btn btn-success" [disabled]="formOrdenanza.invalid">Agregar</button>
-              <button type="button" (click)="cancelar()" class="btn btn-primary">
-                Cancelar
-              </button>
-            </div>
-          </form>
-        </div>
+            </div>-->
+
+          <!--Botones-->
+          <div class="btn-group" role="group" aria-label="">
+            <button type="submit" class="btn btn-success">Editar</button>
+            <button type="button" (click)="cancelar()" class="btn btn-primary">
+              Cancelar
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

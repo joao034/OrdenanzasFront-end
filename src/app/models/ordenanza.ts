@@ -1,5 +1,6 @@
 export class Ordenanza {
-    fecha_ordenanza : Date
+    id_ordenanza : number
+    fecha_ordenanza : any
     nombre : string
     palabras : string
     id_eje : number

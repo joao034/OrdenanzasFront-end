@@ -80,8 +80,12 @@ export class AgregarOrdenanzaComponent implements OnInit {
       this.crudOrdenanzas
         .subirOrdenanza(this.ordenanza)
         .subscribe((respuesta) => {
-          console.log(respuesta);
-          alert('Ordenanza agregada correctamente!');
+          if(respuesta['success'] == 1){
+            console.log(respuesta);
+            alert('Ordenanza agregada correctamente!');
+          }else{
+            alert('!Error al editar la ordenanza!')
+          }
           //this.limpiarCampos()
           this.redireccion()
         });
@@ -121,12 +125,13 @@ export class AgregarOrdenanzaComponent implements OnInit {
   }
 
   redireccion(){
-    this.router.navigate(['/inicio'])
+    this.router.navigate(['/ordenanzas'])
   }
 
   cancelar() {
     if(window.confirm('¿Desea cancelar la ordenanza?')){
       this.limpiarCampos()
+      this.redireccion()
     }
   }
 

@@ -14,6 +14,10 @@
 
     <div class="container">
       <div class="row">
+        <!--
+        <div class="col col-1">
+          <th>Id</th>
+        </div>-->
         <div class="col col-2">
           <th>Fecha Emisión</th>
         </div>
@@ -30,6 +34,10 @@
       <hr />
 
       <div class="row" *ngFor="let ordenanza of temporalData">
+        <!--
+        <div class="col col-1">
+          {{ ordenanza.id_ordenanza }}
+        </div>-->
         <div class="col col-2">
           {{ ordenanza.fecha_ordenanza }}
         </div>

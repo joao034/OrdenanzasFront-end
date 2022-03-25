@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -27,8 +28,8 @@ export class CrudOrdenanzaService {
     return this.http.get(`${environment.API_URL}ordenanza.php?deshabilitar=${id}`)
   }
 
-  editarOrdenanza(){
-
+  editarOrdenanza( id_ordenanza : any, datosOrdenanza : any ): Observable<any>{
+    return this.http.post(`${environment.API_URL}ordenanza.php?actualizar=${id_ordenanza}`, datosOrdenanza)
   }
 
   buscarOrdenanza(){}
