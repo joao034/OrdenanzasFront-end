@@ -4,6 +4,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -15,12 +17,14 @@ import { RouterModule } from '@angular/router';
     MatCardModule,
     FormsModule, 
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatPaginatorModule
   ], 
   exports:[
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }

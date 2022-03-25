@@ -19,7 +19,7 @@ export class CrudOrdenanzaService {
     return this.http.get(`${environment.API_URL}ordenanza.php`)
   }
 
-  obtenerOrdenanza(id:any){
+  obtenerOrdenanza(id:any) : Observable<any>{
     return this.http.get(`${environment.API_URL}ordenanza.php?id=${id}`)
   }
 

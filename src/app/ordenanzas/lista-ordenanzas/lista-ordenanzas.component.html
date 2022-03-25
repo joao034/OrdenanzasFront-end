@@ -13,51 +13,59 @@
     <!--Grid-->
 
     <div class="container">
-        <div class="row">
-          <div class="col col-2">
-            <th>Fecha Emisión</th>
-          </div>
-          <div class="col col-5">
-            <th>Nombre</th>
-          </div>
-          <div class="col col-2">
-            <th>Archivo</th>
-          </div>
-          <div class="col col-3">
-            <th>Acciones</th>
-          </div>
+      <div class="row">
+        <div class="col col-2">
+          <th>Fecha Emisión</th>
         </div>
-        <hr>
+        <div class="col col-6">
+          <th>Nombre</th>
+        </div>
+        <div class="col col-1">
+          <th>Archivo</th>
+        </div>
+        <div class="col col-3">
+          <th>Acciones</th>
+        </div>
+      </div>
+      <hr />
 
-        <div class="row" *ngFor="let ordenanza of listaOrdenanzas">
-          <div class="col col-2">
-            {{ ordenanza.fecha_ordenanza }}
-          </div>
-          <div class="col col-5">
-            {{ ordenanza.nombre }}
-          </div>
-          <div class="col col-2">
-            <a href="http://localhost/ordenanzas/file/{{ ordenanza.archivo }}"
-              >Ver archivo</a
-            >
-          </div>
-          <div class="col col-3">
-            <a class="btn btn-info" routerLink="editar-ordenanza/{{ordenanza.id_ordenanza}}">Editar</a> |
-            <a
-              class="btn btn-danger"
-              role="button"
-              (click)="deshabilitarOrdenanza(ordenanza.id_ordenanza)"
-              >Deshabilitar</a
-            >
-          </div>
-          <hr>
+      <div class="row" *ngFor="let ordenanza of temporalData">
+        <div class="col col-2">
+          {{ ordenanza.fecha_ordenanza }}
         </div>
-        
+        <div class="col col-6">
+          {{ ordenanza.nombre }}
+        </div>
+        <div class="col col-1">
+          <a href="http://localhost/ordenanzas/file/{{ ordenanza.archivo }}"
+            ><img src="./assets/img/archivo.png" alt="archivo ordenanza"
+          /></a>
+        </div>
+        <div class="col col-3">
+          <a
+            class="btn btn-info"
+            routerLink="editar-ordenanza/{{ ordenanza.id_ordenanza }}"
+            >Editar</a
+          >
+          |
+          <a
+            class="btn btn-danger"
+            role="button"
+            (click)="deshabilitarOrdenanza(ordenanza.id_ordenanza)"
+            >Deshabilitar</a
+          >
+        </div>
+        <hr />
+      </div>
+
+      <app-paginador
+        [length]="length"
+        (onNextPage)="nextPage($event)"
+      ></app-paginador>
     </div>
 
-
-<!--"Tabla Reponsiva"-->
-<!--
+    <!--"Tabla Reponsiva"-->
+    <!--
     <div class="container">
       <div class="table-responsive-sm">
         <table class="table">
@@ -95,6 +103,5 @@
       </div>
     </div>
 -->
-   
   </div>
 </div>

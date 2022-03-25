@@ -121,7 +121,7 @@ export class AgregarOrdenanzaComponent implements OnInit {
   }
 
   redireccion(){
-    this.router.navigate(['/ordenanzas'])
+    this.router.navigate(['/inicio'])
   }
 
   cancelar() {

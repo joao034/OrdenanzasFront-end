@@ -6,6 +6,7 @@ import { AgregarOrdenanzaComponent } from './agregar-ordenanza/agregar-ordenanza
 import { SharedModule } from '../shared/shared.module';
 import { ListaOrdenanzasComponent } from './lista-ordenanzas/lista-ordenanzas.component';
 import { EditarOrdenanzaComponent } from './editar-ordenanza/editar-ordenanza.component';
+import { PaginadorComponent } from './paginador/paginador.component';
 
 
 
@@ -14,7 +15,8 @@ import { EditarOrdenanzaComponent } from './editar-ordenanza/editar-ordenanza.co
     PageOrdenanzasComponent,
     AgregarOrdenanzaComponent,
     ListaOrdenanzasComponent,
-    EditarOrdenanzaComponent
+    EditarOrdenanzaComponent,
+    PaginadorComponent
   ],
   imports: [
     CommonModule,
