@@ -10,8 +10,28 @@
 <div class="card">
   <div class="card-header text-center">Ordenanzas Municipales</div>
   <div class="card-body">
-    <!--Grid-->
 
+    <!--Buscador-->
+    <div class="container">
+      
+        <div class="d-flex flex-row justify-content-end">
+          <div class="p-2">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="parametroBusqueda"
+              placeholder="Buscador Ordenanzas"
+            />
+          </div>
+          <!--
+          <div class="p-2">
+            <button type="button" class="btn btn-primary" (click)="buscarOrdenanza()">Buscar</button>
+          </div>
+        </div>
+        -->
+    </div>
+
+    <!--Grid-->
     <div class="container">
       <div class="row">
         <!--
@@ -33,7 +53,7 @@
       </div>
       <hr />
 
-      <div class="row" *ngFor="let ordenanza of temporalData">
+      <div class="row" *ngFor="let ordenanza of temporalData | filter : parametroBusqueda">
         <!--
         <div class="col col-1">
           {{ ordenanza.id_ordenanza }}
@@ -57,6 +77,7 @@
           >
           |
           <a
+            *ngIf="administrador"
             class="btn btn-danger"
             role="button"
             (click)="deshabilitarOrdenanza(ordenanza.id_ordenanza)"

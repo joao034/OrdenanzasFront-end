@@ -32,6 +32,8 @@ export class CrudOrdenanzaService {
     return this.http.post(`${environment.API_URL}ordenanza.php?actualizar=${id_ordenanza}`, datosOrdenanza)
   }
 
-  buscarOrdenanza(){}
+  buscarOrdenanza(parametroBusqueda : any): Observable<any>{
+    return this.http.get(`${environment.API_URL}buscarOrdenanzaAdmin.php`, parametroBusqueda)
+  }
 
 }

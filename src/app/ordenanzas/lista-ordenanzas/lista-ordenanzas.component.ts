@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormGroup } from '@angular/forms';
+import { LoginComponent } from 'src/app/components/login/login.component';
 import { CrudOrdenanzaService } from 'src/app/services/crud-ordenanza.service';
 
 @Component({
@@ -9,9 +10,13 @@ import { CrudOrdenanzaService } from 'src/app/services/crud-ordenanza.service';
 })
 export class ListaOrdenanzasComponent implements OnInit {
   //atributos
+  administrador : boolean
   listaOrdenanzas: any
   temporalData:any[]
   length : number
+  //grupo : FormGroup
+
+  parametroBusqueda : any
   
   //Atributos paginator
   number !: number[]
@@ -20,10 +25,14 @@ export class ListaOrdenanzasComponent implements OnInit {
   files = 0
   end = 0
 
-  constructor(private crudOrdenanzas: CrudOrdenanzaService) {}
+  constructor(private crudOrdenanzas: CrudOrdenanzaService) {
+    this.administrador =
+      LoginComponent.usuario.id_permiso_per == 1 ? true : false;
+  }
 
   ngOnInit(): void {
     this.cargarListaOrdenanzas();
+    //this.buscarOrdenanza()
   }
 
   //Metodo Paginador
@@ -52,7 +61,18 @@ export class ListaOrdenanzasComponent implements OnInit {
     }
   }
 
-  
-  
-  
+  buscarOrdenanza(){
+    if(this.parametroBusqueda == ""){
+      this.ngOnInit()
+    }else{
+      this.temporalData = this.listaOrdenanzas.filter(
+        (res : any) => {
+          return res.parametroBusqueda.toLocaleLowerCase().match(
+            this.parametroBusqueda.toLocaleLowerCase()
+          )
+        },
+        console.log(this.temporalData)
+      )
+    }
+  }
 }
