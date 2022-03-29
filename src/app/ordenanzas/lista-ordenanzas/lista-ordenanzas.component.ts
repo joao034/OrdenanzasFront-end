@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { LoginComponent } from 'src/app/components/login/login.component';
 import { CrudOrdenanzaService } from 'src/app/services/crud-ordenanza.service';
 
@@ -57,11 +56,13 @@ export class ListaOrdenanzasComponent implements OnInit {
     if (window.confirm('¿Desea deshabilitar la ordenanza?')) {
       this.crudOrdenanzas.deshabilitarOrdenanza(id).subscribe((respuesta) => {
         alert("!Ordenanza Deshabilitada!")
+        this.cargarListaOrdenanzas()
       });
     }
   }
 
-  buscarOrdenanza(){
+
+  /*buscarOrdenanza(){
     if(this.parametroBusqueda == ""){
       this.ngOnInit()
     }else{
@@ -74,5 +75,5 @@ export class ListaOrdenanzasComponent implements OnInit {
         console.log(this.temporalData)
       )
     }
-  }
+  }*/
 }

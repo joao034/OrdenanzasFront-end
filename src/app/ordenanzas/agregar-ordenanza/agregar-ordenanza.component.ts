@@ -84,7 +84,7 @@ export class AgregarOrdenanzaComponent implements OnInit {
             console.log(respuesta);
             alert('Ordenanza agregada correctamente!');
           }else{
-            alert('!Error al editar la ordenanza!')
+            alert('!Error al agregar la ordenanza!')
           }
           //this.limpiarCampos()
           this.redireccion()
