@@ -77,16 +77,24 @@ export class EditarUsuarioComponent implements OnInit {
     this.crudUsuario
       .editarUsuario(this.formUsuario.value)
       .subscribe((respuesta) => {
+        if(respuesta['success'] === 1){
+          alert('!Datos de usuario actualizados correctamente!');
+        }else{
+          alert('!Error al actualizar los datos del usuario!');
+        }
         console.log(respuesta)
-        alert('Datos de usuario actualizados correctamente!');
         this.cancelar();
       });
   }
 
   actualizarClave(){
     this.crudUsuario.editarClave(this.formUsuario.value, this.idUsuario).subscribe(
-      (respuesta) => {
-        alert('Contraseña actualizada!')
+      (respuesta : any) => {
+        if(respuesta['success'] === 1){
+          alert('!Contraseña actualizada!')
+        }else{
+          alert('!Error al actualizar la contraseña!')
+        }
         this.cancelar()
       }
     )

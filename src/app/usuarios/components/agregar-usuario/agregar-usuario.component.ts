@@ -37,7 +37,11 @@ export class AgregarUsuarioComponent implements OnInit {
   agregarUsuario():any{
     this.crudUsuario.agregarUsuario(this.formUsuario.value).subscribe(
       (datos) => {
-        alert('Usuario insertado correctamente')
+        if(datos['success'] === 1){
+          alert('!Usuario insertado correctamente!')
+        }else{
+          alert('!Error al insertar el usuario!')
+        }
         //Redirecciona a la lista de usuario una vez insertado el nuevo registro
         this.cancelar()
       }

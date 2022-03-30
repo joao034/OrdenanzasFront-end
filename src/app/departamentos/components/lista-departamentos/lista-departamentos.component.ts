@@ -22,9 +22,14 @@ export class ListaDepartamentosComponent implements OnInit {
   }
 
   borrar(id: any, iControl: any) {
-    if (window.confirm('Desea eliminar el siguiente departamento?')) {
+    if (window.confirm('¿Desea eliminar el siguiente departamento?')) {
       this.crudDepartamento.eliminarDepartamento(id).subscribe((respuesta) => {
-        this.listaDepartamentos.splice(iControl, 1);
+        if(respuesta['success'] === 1){
+          this.listaDepartamentos.splice(iControl, 1);
+          alert('!Departamento eliminado!')
+        }else{
+          alert('!Error al eliminar el departamento!')
+        }
       });
     }
   }

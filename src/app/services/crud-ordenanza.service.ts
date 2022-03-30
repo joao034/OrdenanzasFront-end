@@ -13,7 +13,7 @@ export class CrudOrdenanzaService {
   constructor(private http : HttpClient) { }
 
   subirOrdenanza( ordenanza : Ordenanza ): Observable<any>{
-    return this.http.post(`${environment.API_URL}ordenanza.php?insertar=1`, ordenanza, {responseType: 'text'});
+    return this.http.post(`${environment.API_URL}ordenanza.php?insertar=1`, ordenanza);
   }
 
   obtenerOrdenanzas(){

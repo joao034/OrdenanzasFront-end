@@ -58,6 +58,7 @@
         <div class="col col-6">
           {{ ordenanza.nombre }}
         </div>
+        <!--cambiar-->
         <div class="col col-1">
           <a href="http://localhost/ordenanzas/file/{{ ordenanza.archivo }}"
              target="_blank"
@@ -88,45 +89,5 @@
         (onNextPage)="nextPage($event)"
       ></app-paginador>
     </div>
-
-    <!--"Tabla Reponsiva"-->
-    <!--
-    <div class="container">
-      <div class="table-responsive-sm">
-        <table class="table">
-          <caption>
-            Ordenanzas Municipales
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Fecha</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Archivo</th>
-              <th scope="col">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let ordenanza of listaOrdenanzas">
-              <td>{{ordenanza.fecha_ordenanza}}</td>
-              <td>{{ordenanza.nombre}}</td>
-              <td><a
-                href="http://localhost/ordenanzas/file/{{ ordenanza.archivo }}"
-                >{{ ordenanza.archivo }}</a
-              ></td>
-              <td> <a class="btn btn-info" routerLink="editar-ordenanza/1">Editar</a>
-                |
-                <a
-                  class="btn btn-danger"
-                  role="button"
-                  (click)="deshabilitarOrdenanza()"
-                  >Eliminar</a
-                ></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
--->
   </div>
 </div>

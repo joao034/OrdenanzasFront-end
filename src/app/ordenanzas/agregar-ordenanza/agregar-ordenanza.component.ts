@@ -21,13 +21,15 @@ export class AgregarOrdenanzaComponent implements OnInit {
 
   private ordenanza = new Ordenanza();
 
+  //inyeccion de servicios
   constructor(
     private crudEje: CrudEjesService,
     private crudDepartamentos: CrudDepartamentosService,
     private crudVigencias: VigenciaService,
     private crudOrdenanzas: CrudOrdenanzaService,
-    private router : Router
+    private router: Router
   ) {
+    //creacion del formulario con los campos obligatorios y no obligatorios
     this.formOrdenanza = new FormGroup({
       nombre: new FormControl(null, Validators.required),
       palabras: new FormControl(null),
@@ -43,22 +45,24 @@ export class AgregarOrdenanzaComponent implements OnInit {
     this.cargarCombos();
   }
 
-  //Captura el archivo que se seleccione
-  capturarArchivo(event: any): any {
-    const files = event.target.files;
-    const file = files[0];
-    this.ordenanza.archivo.nombreArchivo = file.name;
-    this.ordenanza.archivo.tamaño = file.size;
-    if (files && file) {
-      var reader = new FileReader();
-      reader.onload = this._handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(file);
+  //Se ejecuta al hacer click en el boton agregar del formulario
+  subirOrdenanza() {
+    this.inicializarOrdenanza();
+    if (this.validarTamañoArchivo(this.ordenanza.archivo.tamaño)) {
+      this.crudOrdenanzas
+        .subirOrdenanza(this.ordenanza)
+        .subscribe((respuesta) => {
+          console.log(respuesta)
+          if (respuesta["success"] === 1) {
+            alert('Ordenanza agregada correctamente!');
+          } else {
+            alert('!Error al agregar la ordenanza!');
+          }
+          this.redireccion();
+        });
+    } else {
+      alert('Archivo demasiado pesado, tamaño límite 60MB');
     }
-  }
-
-  _handleReaderLoaded(readerEvent: any) {
-    var binaryString = readerEvent.target.result;
-    this.ordenanza.archivo.base64textString = btoa(binaryString);
   }
 
   //Setea todas los atributos de una ordenanza ingresadas en los inputs html
@@ -73,25 +77,10 @@ export class AgregarOrdenanzaComponent implements OnInit {
       this.formOrdenanza.controls['id_vigencia'].value;
   }
 
-  //Se ejecuta al hacer click en el boton agregar del formulario
-  subirOrdenanza() {
-    this.inicializarOrdenanza();
-    if (this.validarTamañoArchivo(this.ordenanza.archivo.tamaño)) {
-      this.crudOrdenanzas
-        .subirOrdenanza(this.ordenanza)
-        .subscribe((respuesta) => {
-          if(respuesta['success'] == 1){
-            console.log(respuesta);
-            alert('Ordenanza agregada correctamente!');
-          }else{
-            alert('!Error al agregar la ordenanza!')
-          }
-          //this.limpiarCampos()
-          this.redireccion()
-        });
-    } else {
-      alert('Archivo demasiado pesado, tamaño límite 20MB');
-    }
+  validarTamañoArchivo(tamaño: any): boolean {
+    //maximo 60 MB
+    const MAX_SIZE_BYTES = 60000000;
+    return tamaño <= MAX_SIZE_BYTES ? true : false;
   }
 
   cargarCombos() {
@@ -118,32 +107,44 @@ export class AgregarOrdenanzaComponent implements OnInit {
     });
   }
 
-  validarTamañoArchivo(tamaño: any): boolean {
-    //maximo 20 MB
-    const MAX_SIZE_BYTES = 20000000;
-    return tamaño <= MAX_SIZE_BYTES ? true : false;
-  }
-
-  redireccion(){
-    this.router.navigate(['/ordenanzas'])
+  redireccion() {
+    this.router.navigate(['/ordenanzas']);
   }
 
   cancelar() {
-    if(window.confirm('¿Desea cancelar la ordenanza?')){
-      this.limpiarCampos()
-      this.redireccion()
+    if (window.confirm('¿Desea cancelar la ordenanza?')) {
+      this.limpiarCampos();
+      this.redireccion();
     }
   }
 
-  limpiarCampos(){
+  limpiarCampos() {
     this.formOrdenanza.setValue({
-      nombre : '',
+      nombre: '',
       palabras: '',
       fecha_ordenanza: '',
-      id_eje : '',
-      id_materia : '',
-      id_vigencia : '',
-      archivo : null
-    })
+      id_eje: '',
+      id_materia: '',
+      id_vigencia: '',
+      archivo: null,
+    });
+  }
+
+  //Captura el archivo que se seleccione
+  capturarArchivo(event: any): any {
+    const files = event.target.files;
+    const file = files[0];
+    this.ordenanza.archivo.nombreArchivo = file.name;
+    this.ordenanza.archivo.tamaño = file.size;
+    if (files && file) {
+      var reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  _handleReaderLoaded(readerEvent: any) {
+    var binaryString = readerEvent.target.result;
+    this.ordenanza.archivo.base64textString = btoa(binaryString);
   }
 }

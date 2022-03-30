@@ -20,7 +20,7 @@ export class CrudEjesService {
   }
 
   agregarEje(eje : Eje): Observable<any>{
-    return this.http.post(`${environment.API_URL}eje.php?insertar=1`, eje, {responseType: 'text'})
+    return this.http.post(`${environment.API_URL}eje.php?insertar=1`, eje)
   }
 
   //ToDO

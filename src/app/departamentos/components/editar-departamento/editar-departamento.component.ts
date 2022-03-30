@@ -43,8 +43,12 @@ export class EditarDepartamentoComponent implements OnInit {
   editarDepartamento(){
     this.crudDepartamento.editarDepartamento(this.formDepartamento.value).subscribe(
       (respuesta) => {
+        if(respuesta['success'] === 1){
+          alert('!Departamento actualizado correctamente!')
+        }else{
+          alert('!Error al actualizar el departamento!')
+        }
         console.log(respuesta)
-        alert('Departamento actualizado correctamente!')
         this.cancelar()
       }
     )

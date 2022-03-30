@@ -25,7 +25,11 @@ export class AgregarEjeComponent implements OnInit {
   agregarEje(){
     this.crudEje.agregarEje(this.formEje.value).subscribe(
       (respuesta) =>{
-        alert('Eje agregado correctamente!')
+        if(respuesta['success'] === 1){
+          alert('!Eje agregado correctamente!')
+        }else{
+          alert('!Error al agregar el eje!')
+        }
         this.redireccionListaEjes()
       }
     )

@@ -31,10 +31,15 @@ export class ListaUsuariosComponent implements OnInit {
   }
 
   borrarUsuario(id : string, iControl:any){
-    if(window.confirm("Desea eliminar el usuario?")){
+    if(window.confirm("¿Desea eliminar el siguiente usuario?")){
       this.crudUsuario.eliminarUsuario(id).subscribe(
         (respuesta) => {
-          this.listaUsuarios.splice(iControl, 1)
+          if(respuesta['success'] === 1){
+            this.listaUsuarios.splice(iControl, 1)
+            alert('!Usuario eliminado!')
+          }else{
+            alert('Error al eliminar el usuario')
+          }
         }
       )
     }

@@ -4,34 +4,33 @@ import { CrudEjesService } from 'src/app/services/crud-ejes.service';
 @Component({
   selector: 'app-lista-ejes',
   templateUrl: './lista-ejes.component.html',
-  styleUrls: ['./lista-ejes.component.css']
+  styleUrls: ['./lista-ejes.component.css'],
 })
 export class ListaEjesComponent implements OnInit {
+  listaEjes: any;
 
-  listaEjes : any
-
-  constructor(private crudEje : CrudEjesService) { }
+  constructor(private crudEje: CrudEjesService) {}
 
   ngOnInit(): void {
-    this.obtenerEjes()
+    this.obtenerEjes();
   }
 
-  obtenerEjes(){
-    this.crudEje.obtenerEjes().subscribe(
-      respuesta => {
-        this.listaEjes = respuesta
-    })
+  obtenerEjes() {
+    this.crudEje.obtenerEjes().subscribe((respuesta) => {
+      this.listaEjes = respuesta;
+    });
   }
-  
-  borrar(id : any, iControl : any){
-    if(window.confirm('Desea eliminar el registro?')){
-      this.crudEje.eliminarEje(id).subscribe(
-        respuesta => {
-          this.listaEjes.splice(iControl, 1)
+
+  borrar(id: any, iControl: any) {
+    if (window.confirm('¿Desea eliminar el siguiente eje?')) {
+      this.crudEje.eliminarEje(id).subscribe((respuesta) => {
+        if (respuesta['success'] === 1) {
+          this.listaEjes.splice(iControl, 1);
+          alert('!Eje eliminado!');
+        } else {
+          alert('!Error al eliminar el eje!');
         }
-      )
+      });
     }
   }
-
-  
 }

@@ -42,7 +42,11 @@ export class EditarEjeComponent implements OnInit {
   editarEje(){
     this.crudEje.editarEje(this.formEje.value).subscribe(
       (respuesta) => {
-        alert('Eje actualizado correctamente!')
+        if(respuesta['success'] === 1 ){
+          alert('!Eje actualizado correctamente!')
+        }else{
+          alert('!Error al actualizar los datos del eje!')
+        }
         this.cancelar()
       }
     )

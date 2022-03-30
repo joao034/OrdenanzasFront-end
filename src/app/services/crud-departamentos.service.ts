@@ -20,7 +20,7 @@ export class CrudDepartamentosService {
   }
 
   agregarDepartamento(departamento : Departamento): Observable<any>{
-    return this.http.post(`${environment.API_URL}departamento.php?insertar=1`, departamento, {responseType: 'text'})
+    return this.http.post(`${environment.API_URL}departamento.php?insertar=1`, departamento)
   }
 
   //ToDO

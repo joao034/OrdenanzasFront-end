@@ -24,7 +24,11 @@ export class AgregarDepartamentoComponent implements OnInit {
   agregarDepartamento(){
     this.crudDepartamento.agregarDepartamento(this.formDepartamento.value).subscribe(
       (respuesta) => {
-        alert('Departamento agregado correctamente!')
+        if(respuesta['success'] === 1){
+          alert('!Departamento agregado correctamente!')
+        }else{
+          alert('!Error al agregar el departamento!')
+        }
         //Redirecciona a la lista de departamentos
         this.cancelar()
       }

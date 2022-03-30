@@ -13,7 +13,7 @@ export class CrudUsuarioService {
   constructor(private http : HttpClient) { }
 
   agregarUsuario(usuario: Usuario) : Observable<any>{
-    return this.http.post(`${environment.API_URL}usuario.php?insertar=1`, usuario, {responseType: 'text'})
+    return this.http.post(`${environment.API_URL}usuario.php?insertar=1`, usuario)
   }
 
   obtenerUsuario(id: any): Observable<any>{
@@ -25,11 +25,11 @@ export class CrudUsuarioService {
   }
 
   eliminarUsuario(id: string) : Observable<any>{
-    return this.http.get(`${environment.API_URL}usuario.php?borrar=${id}`, {responseType: 'text'})
+    return this.http.get(`${environment.API_URL}usuario.php?borrar=${id}`)
   }
 
   editarUsuario(usuario : Partial<Usuario>): Observable<any>{
-    return this.http.post(`${environment.API_URL}usuario.php?actualizar=${usuario.id_usuario}`, usuario, {responseType: 'text'})
+    return this.http.post(`${environment.API_URL}usuario.php?actualizar=${usuario.id_usuario}`, usuario)
   }
 
   editarClave(datosUsuario : any, id: any){
